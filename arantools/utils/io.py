@@ -4,6 +4,8 @@ import os.path as osp
 import pickle
 from typing import Any, List, Optional, Union
 
+import cv2
+import numpy as np
 import yaml
 
 
@@ -144,6 +146,7 @@ def read_pickle(input_path: str) -> Any:
     Returns:
         Any: 读入结果.
     """
+    input_path = prepare_input_path(input_path)
     with open(input_path, "rb") as f:
         ret = pickle.load(f)
     return ret
@@ -159,3 +162,33 @@ def write_pickle(contents: Any, output_path: str):
     output_path = prepare_output_path(output_path)
     with open(output_path, "w") as f:
         pickle.dump(contents, f)
+
+
+def read_image(input_path: str, unchanged: bool = False) -> np.ndarray:
+
+    """读入图片文件.
+
+    Args:
+        input_path (str): 输入文件路径.
+        unchanged (bool, optional): 是否使用cv2.IMREAD_UNCHANGED. 默认为False.
+
+    Returns:
+        np.ndarray: 读入结果.
+    """
+    input_path = prepare_input_path(input_path)
+    if unchanged:
+        ret = cv2.imread(input_path, cv2.IMREAD_UNCHANGED)
+    else:
+        ret = cv2.imread(input_path)
+    return ret
+
+
+def write_image(contents: np.ndarray, output_path: str):
+    """写入pickle文件.
+
+    Args:
+        contents (np.ndarray): 写入内容.
+        output_path (str): 输出文件路径.
+    """
+    output_path = prepare_output_path(output_path)
+    cv2.imwrite(output_path, contents)
