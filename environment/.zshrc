@@ -150,8 +150,8 @@ unset __conda_setup
 
 # proxy setting
 proxy () {
-  export HTTPS_PROXY="http://127.0.0.1:10808";
-  export HTTP_PROXY="http://127.0.0.1:10808";
+  export HTTPS_PROXY="http://127.0.0.1:10809";
+  export HTTP_PROXY="http://127.0.0.1:10809";
   export ALL_PROXY="socks5://127.0.0.1:10808";
   git config --global http.proxy "socks5://127.0.0.1:10808";
   git config --global https.proxy "socks5://127.0.0.1:10808";
@@ -161,7 +161,7 @@ noproxy () {
   unset HTTPS_PROXY;
   unset HTTP_PROXY;
   unset ALL_PROXY;
-  git config --global --unset  http.proxy;
-  git config --global --unset  https.proxy;
+  git config --global --unset http.proxy;
+  git config --global --unset https.proxy;
   echo "HTTP Proxy off"
 }
