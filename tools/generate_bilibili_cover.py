@@ -23,6 +23,7 @@ def main():
     print(args.input_path)
     for img_path in args.input_path:
         img = cv2.imread(img_path)
+        img = cv2.resize(img, (0, 0), fx=2, fy=2)
         img = cv2.copyMakeBorder(img, 200, 200, 0, 0, cv2.BORDER_CONSTANT)
         cv2.imwrite(img_path, img)
 

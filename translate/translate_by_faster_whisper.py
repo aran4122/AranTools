@@ -15,7 +15,7 @@ def parse_args():
         "-m", "--model_type", default="large-v3", choices=["medium", "large-v3"]
     )
     parser.add_argument(
-        "-c", "--compute_type", default="auto", choices=["int8", "float32", "auto"]
+        "-c", "--compute_type", default="float32", choices=["int8", "float32", "auto"]
     )
     args = parser.parse_args()
     return args

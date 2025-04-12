@@ -9,7 +9,7 @@ AUDIO_PATH=$(realpath $1)
 OUTPUT_PATH=$(realpath $2)
 
 if [[ $(echo $OUTPUT_PATH|rev|cut -b -4|rev) != .mp4 ]]; then
-    OUTPUT_PATH=$OUTPUT_PATH/$(basename $AUDIO_PATH|sed 's/.mp3/.mp4/');
+    OUTPUT_PATH=$OUTPUT_PATH/$(basename $AUDIO_PATH|sed 's/.mp3/.mp4/')
 fi
 
 DATE=$(basename $AUDIO_PATH|cut -b -4).$(basename $AUDIO_PATH|cut -b 5-6).$(basename $AUDIO_PATH|cut -b 7-8)
