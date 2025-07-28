@@ -105,8 +105,9 @@ def write_json(contents: Any, output_path: str, indent: Union[int, str, None] = 
         indent (Union[int, str, None], optional): 缩进. 默认为2.
     """
     output_path = prepare_output_path(output_path)
-    with open(output_path, "w") as f:
-        json.dump(contents, f, indent=indent)
+    data = json.dumps(contents, indent=indent, ensure_ascii=False)
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(data)
 
 
 def read_yaml(input_path: str) -> Any:

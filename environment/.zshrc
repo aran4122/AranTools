@@ -125,13 +125,16 @@ export HISTSIZE=10000
 export SAVEHIST=$HISTSIZE
 
 # Set common path
-codedir="/mnt/e/Code"
+code="/mnt/e/Code"
+trans="/mnt/e/Code/AranTools/translate"
 
 # Set alias
 alias python="python3"
 alias pip="pip3"
 alias lint="black . && isort . && flake8 --max-line-length 88 ."
 alias rpatool="python $codedir/AranTools/tools/rpatool.py"
+alias trans="cd $trans"
+alias code="cd $code"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -165,3 +168,8 @@ noproxy () {
   git config --global --unset https.proxy;
   echo "HTTP Proxy off"
 }
+
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+export HF_ENDPOINT="https://hf-mirror.com"
