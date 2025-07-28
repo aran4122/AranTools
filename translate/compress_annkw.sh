@@ -16,7 +16,7 @@ DATE=$(basename $AUDIO_PATH|cut -b -4).$(basename $AUDIO_PATH|cut -b 5-6).$(base
 sed "s/YYYY.MM.DD/$DATE/" $SCRIPT_DIR/assets/AUDREY_ANN.ass > $SCRIPT_DIR/assets/AUDREY_ANN_tmp.ass
 
 ffmpeg -y \
-    -loop 1 -i $SCRIPT_DIR/assets/AUDREY_ANN.jpg -i $AUDIO_PATH -shortest -r 1 \
+    -loop 1 -i $SCRIPT_DIR/assets/AUDREY_ANN.jpg -i $AUDIO_PATH -shortest -r 24 \
     -vf subtitles=$SCRIPT_DIR/assets/AUDREY_ANN_tmp.ass -c:v h264_nvenc -c:a copy $OUTPUT_PATH
 
 rm $SCRIPT_DIR/assets/AUDREY_ANN_tmp.ass
